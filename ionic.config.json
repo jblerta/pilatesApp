@@ -1,7 +1,0 @@
-{
-  "name": "pilatesApp",
-  "integrations": {
-    "capacitor": {}
-  },
-  "type": "angular"
-}
