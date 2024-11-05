@@ -1,0 +1,41 @@
+
+<ion-toolbar [ngClass]="{ 'bottom-menu': isMobile, 'top-menu': !isMobile }">
+  <ion-grid>
+    <ion-row class="ion-justify-content-around">
+      <!-- Workouts -->
+      <ion-col size="auto" class="menu-item">
+        <ion-button fill="clear" routerLink="/user/workouts">
+          <ion-icon name="barbell-outline"></ion-icon>
+        </ion-button>
+      </ion-col>
+
+      <!-- Recipes -->
+      <ion-col size="auto" class="menu-item">
+        <ion-button fill="clear" routerLink="/user/recipes">
+          <ion-icon name="fast-food-outline"></ion-icon>
+        </ion-button>
+      </ion-col>
+
+      <!-- Home -->
+      <ion-col size="auto" class="menu-item">
+        <ion-button fill="clear" routerLink="/user/home">
+          <ion-icon name="home-outline"></ion-icon>
+        </ion-button>
+      </ion-col>
+
+      <!-- My Videos -->
+      <ion-col size="auto" class="menu-item">
+        <ion-button fill="clear" routerLink="/videos">
+          <ion-icon name="videocam-outline"></ion-icon>
+        </ion-button>
+      </ion-col>
+
+      <!-- My Account -->
+      <ion-col size="auto" class="menu-item">
+        <ion-button fill="clear" routerLink="/user/account">
+          <ion-icon name="person-outline"></ion-icon>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-toolbar>
