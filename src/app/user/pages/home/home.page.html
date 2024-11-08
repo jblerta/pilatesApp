@@ -1,56 +1,52 @@
 
-
 <app-menu></app-menu>
 <ion-content>
+  
+
   <!-- Header with Image -->
   <ion-header>
-    <ion-toolbar>
-      <img src="../../assets/pilates.webp" alt="Header Image" style="width: 100%; height: 50vh; object-fit: cover;">
+    <ion-toolbar class="header">
+      <img src="../../assets/yogaPowerHeader2.png" alt="Header Image" class="img-prop">
     </ion-toolbar>
   </ion-header>
 
-<!-- Main Content with Scrollable Sections of 8 Cards Each -->
-<ion-grid fixed="true" style="width: 95%; margin: 0 auto;">
-  <!-- Four Sections with Scrollable Cards -->
-  <ng-container *ngFor="let section of [1, 2, 3, 4]">
-    <ion-row>
-      <div><h2>Sections</h2></div>
-      <ion-col size="12">
-        <div class="card-container">
-          <!-- 8 Cards in Each Section -->
-          <div class="card" *ngFor="let card of [1, 2, 3, 4, 5, 6, 7, 8]">
-            <ion-card class="card-dimension">
-              <ion-img src="../../assets/pilates.webp" class="img-dimension" alt="Card Image"></ion-img>
-              <ion-card-header>
-                <ion-card-title>Card Title {{card}}</ion-card-title>
-              </ion-card-header>
-              <ion-card-content>
-                Some content here for card {{card}}.
-              </ion-card-content>
-            </ion-card>
-          </div>
-        </div>
-      </ion-col>
-    </ion-row>
-  </ng-container>
-</ion-grid>
+  <ion-grid fixed="true" style="width: 95%; margin: 0 auto;">
+    <ng-container *ngFor="let section of sections; let i = index">
+      <ion-row>
+        <div><h2>{{section.sectionName}}</h2></div>
+        <ion-col size="12">
 
+            <div class="card-container">
+              <div
+                class="card"
+                *ngFor="let card of section.cards | slice: section.visibleStart : section.visibleEnd"
+              >
+                <ion-card class="card-dimension">
+                  <ion-img src="{{card.image}}" class="img-dimension" alt="Card Image"></ion-img>
+                  <ion-card-header>
+                    <ion-card-title>Card Title {{card.title}}</ion-card-title>
+                  </ion-card-header>
+                  <ion-card-content>
+                    Some content here for card {{card.description}}.
+                  </ion-card-content>
+                </ion-card>
+              </div>
+            </div>
+            <div>See All</div>
+            <div class="card-navigation">
+              <button class="nav-button prev" (click)="goToPrevious(i)" [disabled]="isPreviousDisabled(i)">Previous</button>
+            <button class="nav-button next" (click)="goToNext(i)" [disabled]="isNextDisabled(i)">Next</button>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ng-container>
+  </ion-grid>
+  
+  
+
+<app-footer></app-footer>
 </ion-content>
 
 
 
 
-<style>
-  /* Horizontal scrollable container for cards */
-  .card-container {
-    display: flex;
-    overflow-x: auto;
-    gap: 10px;
-    padding: 10px 0;
-  }
-
-  /* Card styling */
-  .card {
-    flex: 0 0 auto;
-  }
-</style>
