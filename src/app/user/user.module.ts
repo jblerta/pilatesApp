@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule,CUSTOM_ELEMENTS_SCHEMA  } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
@@ -14,7 +14,9 @@ import { MyAccountComponent } from './pages/my-account/my-account.component';
 
 
 @NgModule({
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   declarations: [
+    
     HomePage,
     RecipesComponent,
     MyWorkoutsComponent,
@@ -25,8 +27,8 @@ import { MyAccountComponent } from './pages/my-account/my-account.component';
     CommonModule,
     FormsModule,
     IonicModule,
-    UserRoutingModule,  // Import routing for user-specific routes
-    SharedModule        // Import shared module to use MenuComponent and other shared components
+    UserRoutingModule,  
+    SharedModule        
   ]
 })
 export class UserModule {}
