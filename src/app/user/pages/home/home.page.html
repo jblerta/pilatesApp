@@ -1,0 +1,52 @@
+
+<app-menu></app-menu>
+<ion-content>
+  
+
+  <!-- Header with Image -->
+  <ion-header>
+    <ion-toolbar class="header">
+      <img src="../../assets/yogaPowerHeader2.png" alt="Header Image" class="img-prop">
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-grid fixed="true" style="width: 95%; margin: 0 auto;">
+    <ng-container *ngFor="let section of sections; let i = index">
+      <ion-row>
+        <div><h2>{{section.sectionName}}</h2></div>
+        <ion-col size="12">
+
+            <div class="card-container">
+              <div
+                class="card"
+                *ngFor="let card of section.cards | slice: section.visibleStart : section.visibleEnd"
+              >
+                <ion-card class="card-dimension">
+                  <ion-img src="{{card.image}}" class="img-dimension" alt="Card Image"></ion-img>
+                  <ion-card-header>
+                    <ion-card-title>Card Title {{card.title}}</ion-card-title>
+                  </ion-card-header>
+                  <ion-card-content>
+                    Some content here for card {{card.description}}.
+                  </ion-card-content>
+                </ion-card>
+              </div>
+            </div>
+            <div>See All</div>
+            <div class="card-navigation">
+              <button class="nav-button prev" (click)="goToPrevious(i)" [disabled]="isPreviousDisabled(i)">Previous</button>
+            <button class="nav-button next" (click)="goToNext(i)" [disabled]="isNextDisabled(i)">Next</button>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ng-container>
+  </ion-grid>
+  
+  
+
+<app-footer></app-footer>
+</ion-content>
+
+
+
+
