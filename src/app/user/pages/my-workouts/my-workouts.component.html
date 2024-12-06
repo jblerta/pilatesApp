@@ -1,3 +1,37 @@
-<p>
-  my-workouts works!
-</p>
+<app-menu></app-menu>
+<ion-content>
+  <ion-header>
+    <ion-toolbar class="header">
+      <img src="../../assets/winter.jpg" alt="Header Image" class="img-prop">
+    </ion-toolbar>
+  </ion-header>
+  
+<ion-grid fixed="true" style="width: 95%; margin: 0 auto;">
+    <ion-row>
+      <div><h3>{{sections[0].sectionName}}</h3></div>
+      <ion-col size="12">
+        <ion-list>
+          <ion-item *ngFor="let card of sections[0].cards" class="card-item">
+            <ion-thumbnail slot="start" class="thumbnail">
+              <video [src]="card.videoURL" class="video-thumbnail" controls poster="{{ card.image }}"></video>
+            </ion-thumbnail>
+            <!-- Title and Description on the Right -->
+            <ion-grid>
+              <ion-row>
+                <ion-col>
+                  <h2 class="card-title">{{ card.title }}</h2>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col>
+                  <p class="card-description">{{ card.description }}</p>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-item>
+        </ion-list>
+         
+      </ion-col>
+    </ion-row>
+</ion-grid>
+</ion-content>

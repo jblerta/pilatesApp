@@ -13,7 +13,7 @@
   <ion-grid fixed="true" style="width: 95%; margin: 0 auto;">
     <ng-container *ngFor="let section of sections; let i = index">
       <ion-row>
-        <div><h2>{{section.sectionName}}</h2></div>
+        <div><h3>{{section.sectionName}}</h3></div>
         <ion-col size="12">
 
             <div class="card-container">
@@ -32,8 +32,8 @@
                 </ion-card>
               </div>
             </div>
-            <div>See All</div>
-            <div class="card-navigation">
+            <div class="seeAll">Show All</div>
+            <div *ngIf="!isMobile" class="card-navigation">
               <button class="nav-button prev" (click)="goToPrevious(i)" [disabled]="isPreviousDisabled(i)">Previous</button>
             <button class="nav-button next" (click)="goToNext(i)" [disabled]="isNextDisabled(i)">Next</button>
           </div>

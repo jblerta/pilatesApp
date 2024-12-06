@@ -1,0 +1,33 @@
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f9f9f9;
+  }
+  
+  .login-card {
+    width: 100%;
+    max-width: 400px;
+  }
+  
+  .text-center {
+    text-align: center;
+  }
+  
+  .additional-links {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+  }
+  
+  .additional-links a {
+    color: var(--ion-color-primary);
+    text-decoration: none;
+    font-size: 0.9rem;
+  }
+  
+  .additional-links a:hover {
+    text-decoration: underline;
+  }
+  
