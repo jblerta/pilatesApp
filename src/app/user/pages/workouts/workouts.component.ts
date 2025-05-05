@@ -52,7 +52,7 @@ export class WorkoutsComponent  implements OnInit {
   }
 
   navigateToWorkoutList() {
-    this.router.navigate(['/user/my-workouts']); 
+    this.router.navigate(['/user/workout-list']); 
   }
 
 

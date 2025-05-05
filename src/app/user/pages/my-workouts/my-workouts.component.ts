@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-my-workouts',
@@ -6,10 +7,23 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./my-workouts.component.scss'],
 })
 export class MyWorkoutsComponent  implements OnInit {
+  isMobile!: boolean;
 
-  constructor() { }
+  constructor(private router: Router) {
+    this.checkScreenSize();
+  }
+  ngOnInit() {
+    this.checkScreenSize();
+  }
 
-  ngOnInit() {}
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any) {
+    this.checkScreenSize();
+  }
+
+  checkScreenSize() {
+    this.isMobile = window.innerWidth < 768; // Adjust based on your breakpoints
+  }
 
   sections = [
     {

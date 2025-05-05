@@ -1,0 +1,59 @@
+.video-page {
+    --ion-background-color: #f2e1e7;
+
+    background-color:#f2e1e7;
+    color: var(--color-primary);
+  }
+  
+  .responsive-container {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 100%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  @media screen and (min-width: 769px) {
+    .responsive-container {
+      width: 70%;
+    }
+  }
+  
+  .video-card {
+    background-color: #cebabb;
+    padding: 12px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
+  
+  .video-thumbnail {
+    width: 100%;
+    height: auto;
+    max-height: 60vh;
+    border-radius: 8px;
+    object-fit: cover;
+  }
+  
+  .video-info {
+    background-color:#cebabb;
+    padding: 16px;
+    border-radius: 10px;
+    color: #f2f2f2;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  }
+  
+  .card-title {
+    font-size: 1.5rem;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #fff; // soft sand/brown tone
+  }
+  
+  .card-description {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #f0f0f0;
+  }
+  

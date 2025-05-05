@@ -1,3 +1,44 @@
-<ion-content>
-  
+
+<app-menu></app-menu>
+<ion-content class="cont">
+    <div class="form-container">
+    <form (ngSubmit)="onSave()">
+      <div>
+        <ion-item>
+          <ion-label position="floating">Name</ion-label>
+          <ion-input type="ion-textarea" [(ngModel)]="formData.name" name="name" required></ion-input>
+        </ion-item>
+      </div>
+
+      <div>
+        <ion-item>
+          <ion-select label="Group" label-placement="floating"></ion-select>
+          <ion-select-option value="apple">Apple</ion-select-option>
+          <ion-select-option value="banana">Banana</ion-select-option>
+          <ion-select-option value="orange">Orange</ion-select-option>
+        </ion-item>
+      </div>
+    
+      <div>
+        <ion-item>
+          <ion-label position="floating">Description</ion-label>
+          <ion-textarea [(ngModel)]="formData.description" name="description"></ion-textarea>
+        </ion-item>
+      </div>
+    
+        <div class="upload">
+          <label position="floating">Upload Image Cover</label>
+          <ion-img *ngIf="imagePreview" [src]="imagePreview"></ion-img>
+          <input type="file" (change)="onFileSelected($event, 'image')" accept="image/*">
+        </div>
+
+        <div class="upload">
+          <label>Upload Video</label>
+          <video *ngIf="videoPreview" [src]="videoPreview" controls></video>
+          <input type="file" (change)="onFileSelected($event, 'video')" accept="video/*">
+        </div>
+    
+        <ion-button expand="full" type="submit">Save</ion-button>
+      </form>
+    </div>
 </ion-content>

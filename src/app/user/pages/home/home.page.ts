@@ -74,6 +74,9 @@ export class HomePage {
   checkScreenSize() {
     this.isMobile = window.innerWidth < 768; // Adjust based on your breakpoints
   }
+  showAll(){
+    this.router.navigate(['/user/workout-list']); 
+  }
 
   goToNext(sectionIndex: number) {
     const section = this.sections[sectionIndex];
@@ -99,6 +102,10 @@ export class HomePage {
   isPreviousDisabled(sectionIndex: number): boolean {
     const section = this.sections[sectionIndex];
     return section.visibleStart <= 0;
+  }
+
+  cardSelected(){
+    this.router.navigate(['/user/single-workout']); 
   }
 
 

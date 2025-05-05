@@ -1,6 +1,4 @@
-ion-content{
-  background-color: #F2F2F2;
-}
+
 #container {
   text-align: center;
   position: absolute;
@@ -44,6 +42,7 @@ ion-content{
 .card-dimension{
   width: 250px;
   height: 350px;
+  cursor: pointer;
 
 }
 .img-dimension{
@@ -84,6 +83,7 @@ ion-content{
 }
 .seeAll{
   text-align: center;
+  align-items: center;
   margin-top:10px;
   color: var(--color-darkCharocal);
   cursor: pointer;

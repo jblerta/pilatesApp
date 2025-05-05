@@ -8,6 +8,9 @@ import { Router } from '@angular/router';
 })
 export class RecipesComponent  implements OnInit {
 
+selectedRecipe(){
+this.router.navigate(['/user/recipe-list']); 
+}
   sections = [
     {
       sectionName:"Winter Workouts",

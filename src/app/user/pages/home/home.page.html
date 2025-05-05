@@ -6,6 +6,7 @@
   <!-- Header with Image -->
   <ion-header>
     <ion-toolbar class="header">
+      <!-- <ion-title>Yoga Power</ion-title> -->
       <img src="../../assets/yogaPowerHeader2.png" alt="Header Image" class="img-prop">
     </ion-toolbar>
   </ion-header>
@@ -21,7 +22,7 @@
                 class="card"
                 *ngFor="let card of section.cards | slice: section.visibleStart : section.visibleEnd"
               >
-                <ion-card class="card-dimension">
+                <ion-card class="card-dimension" (click)="cardSelected()" >
                   <ion-img src="{{card.image}}" class="img-dimension" alt="Card Image"></ion-img>
                   <ion-card-header>
                     <ion-card-title>Card Title {{card.title}}</ion-card-title>
@@ -32,7 +33,7 @@
                 </ion-card>
               </div>
             </div>
-            <div class="seeAll">Show All</div>
+            <div class="seeAll" (click)="showAll()">Show All</div>
             <div *ngIf="!isMobile" class="card-navigation">
               <button class="nav-button prev" (click)="goToPrevious(i)" [disabled]="isPreviousDisabled(i)">Previous</button>
             <button class="nav-button next" (click)="goToNext(i)" [disabled]="isNextDisabled(i)">Next</button>
@@ -43,8 +44,10 @@
   </ion-grid>
   
   
+<div *ngIf="!isMobile" >
+  <app-footer></app-footer>
+</div>
 
-<app-footer></app-footer>
 </ion-content>
 
 

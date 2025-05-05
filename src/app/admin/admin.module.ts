@@ -5,12 +5,14 @@ import { IonicModule } from '@ionic/angular';
 import { AdminRoutingModule } from './admin-routing.module';
 import { AddSectionComponent } from './add-section/add-section.component';
 import { SubscriptionComponent } from './subscription/subscription.component';
+import { MenuComponent } from './sharedAdmin/menu/menu.component';
 
 @NgModule({
   schemas:[CUSTOM_ELEMENTS_SCHEMA],
   declarations: [
     AddSectionComponent,
-    SubscriptionComponent
+    SubscriptionComponent,
+    MenuComponent
     ],
   imports: [
     CommonModule,

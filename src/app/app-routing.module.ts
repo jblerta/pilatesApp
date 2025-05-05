@@ -16,7 +16,7 @@ const routes: Routes = [
   },
   {
     path: '', // Default route
-    redirectTo: 'user/home',
+    redirectTo: 'admin/add-section',
     pathMatch: 'full'
   },
   { path: '**', 

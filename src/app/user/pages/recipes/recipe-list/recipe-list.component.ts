@@ -1,14 +1,14 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { UserModule } from 'src/app/user/user.module';
 
 @Component({
-  selector: 'app-workout-list',
-  templateUrl: './workout-list.component.html',
-  styleUrls: ['./workout-list.component.scss'],
+  selector: 'app-recipe-list',
+  templateUrl: './recipe-list.component.html',
+  styleUrls: ['./recipe-list.component.scss'],
 })
-export class WorkoutListComponent  implements OnInit {
-  isMobile!: boolean;
+export class RecipeListComponent  implements OnInit {
+
+ isMobile!: boolean;
 
   constructor(private router: Router) {
     this.checkScreenSize();
@@ -42,7 +42,6 @@ export class WorkoutListComponent  implements OnInit {
     }]
 
     selectedCard(){
-      this.router.navigate(['/user/single-workout']); 
+      this.router.navigate(['/user/single-recipe']); 
     }
-
 }
