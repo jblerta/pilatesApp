@@ -14,11 +14,6 @@ const routes: Routes = [
     path: 'login', 
     loadChildren: () => import('./login/login.component').then(m => m.LoginComponent)
   },
-  {
-    path: '', // Default route
-    redirectTo: 'admin/add-section',
-    pathMatch: 'full'
-  },
   { path: '**', 
     redirectTo: 'user/home' }
   

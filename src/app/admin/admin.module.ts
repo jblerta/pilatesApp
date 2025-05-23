@@ -20,4 +20,9 @@ import { MenuComponent } from './sharedAdmin/menu/menu.component';
     IonicModule
   ]
 })
-export class AdminModule { }
+export class AdminModule {
+
+  ngOnInit(): void {
+  // Initialization logic here (optional)
+}
+ }

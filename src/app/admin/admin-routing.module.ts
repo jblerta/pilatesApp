@@ -6,17 +6,14 @@ import { SubscriptionComponent } from './subscription/subscription.component';
 const routes: Routes = [
 
   {
-    path: 'admin',  // Default route within the admin feature
-    redirectTo: 'admin/add-section',
+    path: '',  // Default route within the admin feature
+    redirectTo: 'add-section',
     pathMatch: 'full'
   },
   {
-    path: 'admin/add-section',  // Admin route for adding a section
-    component: AddSectionComponent
-  },
+    path: 'add-section', component: AddSectionComponent},
   {
-    path: 'admin/subscription', // Admin route for managing subscriptions
-    component: SubscriptionComponent
+    path: 'subscription', component: SubscriptionComponent
   }
   
 ];

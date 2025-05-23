@@ -1,6 +1,7 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserModule } from 'src/app/user/user.module';
+import { WorkoutService } from 'src/app/services/workout.service';
 
 @Component({
   selector: 'app-workout-list',
@@ -9,13 +10,25 @@ import { UserModule } from 'src/app/user/user.module';
 })
 export class WorkoutListComponent  implements OnInit {
   isMobile!: boolean;
+  workouts:any[] =[];
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private workoutService:WorkoutService) {
     this.checkScreenSize();
   }
   ngOnInit() {
     this.checkScreenSize();
+    this.loadWorkouts();
   }
+
+loadWorkouts() {
+  this.workoutService.getAllWorkouts().subscribe(
+    (data) => {
+      this.workouts = data;
+      console.log('✅ DATA loaded from backend:', this.workouts);
+    },
+    (error) => console.error('❌ Error loading workouts', error)
+  );
+}
 
   @HostListener('window:resize', ['$event'])
   onResize(event: any) {
