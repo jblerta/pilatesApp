@@ -1,7 +1,10 @@
 
-<app-menu></app-menu>
 <ion-content class="cont">
-    <div class="form-container">
+  <app-menu></app-menu>
+  <div class="form-container">
+    <div class="form-title">
+      <h3>Enter Workout</h3>
+    </div>
     <form (ngSubmit)="onSave()" enctype="multipart/form-data">
       <div>
         <ion-item>
@@ -10,36 +13,38 @@
         </ion-item>
       </div>
 
-      <!-- <div>
-        <ion-item>
-          <ion-select label="Group" label-placement="floating"></ion-select>
+      <div>
+      <ion-item>
+        <ion-select label="Section" label-placement="floating" name="section">
           <ion-select-option value="apple">Apple</ion-select-option>
           <ion-select-option value="banana">Banana</ion-select-option>
           <ion-select-option value="orange">Orange</ion-select-option>
-        </ion-item>
+        </ion-select>
+      </ion-item>
       </div>
-     -->
+    
       <div>
         <ion-item>
           <ion-label position="floating">Description</ion-label>
           <ion-textarea [(ngModel)]="formData.description" name="description"></ion-textarea>
         </ion-item>
       </div>
-       <ion-button expand="full" type="submit">Save</ion-button>
     
         <div class="upload">
           <label position="floating">Upload Image Cover</label>
-          <ion-img *ngIf="imagePreview" [src]="imagePreview"></ion-img>
+        <div class="preview-box" *ngIf="imagePreview">
+          <ion-img [src]="imagePreview"></ion-img>
+        </div> 
           <input type="file" (change)="onFileSelected($event, 'image')" accept="image/*">
         </div>
 
-        <!-- <div class="upload">
+        <div class="upload">
           <label>Upload Video</label>
           <video *ngIf="videoPreview" [src]="videoPreview" controls></video>
           <input type="file" (change)="onFileSelected($event, 'video')" accept="video/*">
-        </div> -->
+        </div>
     
-       
       </form>
+      <ion-button expand="full" type="submit" class="save-btn">Save</ion-button>
     </div>
 </ion-content>

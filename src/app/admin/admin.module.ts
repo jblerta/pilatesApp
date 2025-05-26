@@ -6,12 +6,14 @@ import { AdminRoutingModule } from './admin-routing.module';
 import { AddSectionComponent } from './add-section/add-section.component';
 import { SubscriptionComponent } from './subscription/subscription.component';
 import { MenuComponent } from './sharedAdmin/menu/menu.component';
+import { AdminWorkoutComponent } from './admin-workout/admin-workout.component';
 
 @NgModule({
   schemas:[CUSTOM_ELEMENTS_SCHEMA],
   declarations: [
     AddSectionComponent,
     SubscriptionComponent,
+    AdminWorkoutComponent,
     MenuComponent
     ],
   imports: [

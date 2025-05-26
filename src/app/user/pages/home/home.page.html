@@ -1,6 +1,6 @@
 
-<app-menu></app-menu>
 <ion-content>
+  <app-menu></app-menu>
   
 
   <!-- Header with Image -->
@@ -11,11 +11,12 @@
     </ion-toolbar>
   </ion-header>
 
+       <ion-row>
+       <ion-button [routerLink]="['/admin/add-section']">Admin Add</ion-button>
+      </ion-row>
   <ion-grid fixed="true" style="width: 95%; margin: 0 auto;">
     <ng-container *ngFor="let section of sections; let i = index">
-      <ion-row>
-       <ion-button [routerLink]="['./admin/add-section']">Admin Add</ion-button>
-      </ion-row>
+
       <ion-row>
         <div><h3>{{section.sectionName}}</h3></div>
         <ion-col size="12">
