@@ -1,3 +1,78 @@
-<p>
-  subscription works!
-</p>
+<ion-content class="cont">
+  <app-menu></app-menu>
+
+  <div class="form-container">
+    <div class="form-title">
+      <h3>💰 Subscription Settings</h3>
+      <p class="subtitle">Set pricing and manage promotional sales for your plans</p>
+    </div>
+
+    <form enctype="multipart/form-data">
+      <!-- Monthly Price -->
+      <div>
+        <ion-item>
+          <ion-label position="floating">Monthly Price (€)</ion-label>
+          <ion-input type="number" min="0"  name="monthly" required></ion-input>
+        </ion-item>
+      </div>
+
+      <!-- Yearly Price -->
+      <div>
+        <ion-item>
+          <ion-label position="floating">Yearly Price (€)</ion-label>
+          <ion-input type="number" min="0" name="yearly" required></ion-input>
+        </ion-item>
+      </div>
+
+      <ion-label class="discount" expand="block" fill="outline" (click)="toggleDiscountSection()">
+        {{ showDiscountSection ? 'Remove Discount' : 'Add Discount' }}
+      </ion-label>
+      <div *ngIf="showDiscountSection" class="ion-margin-top">
+  
+      <div>
+        <ion-item>
+          <ion-label position="floating">Discount (%)</ion-label>
+          <ion-input type="number" min="0" max="100"  name="discount"></ion-input>
+        </ion-item>
+      </div>
+
+   
+       <div class="dates">
+
+         <div>
+           <ion-label position="stacked" class="ion-margin-bottom">Sale Start</ion-label>
+           <ion-item>
+             <ion-datetime class="ion-no-padding" display-format="MMM DD, YYYY"  name="saleStart"></ion-datetime>
+           </ion-item>
+         </div>
+   
+         <div>
+           <ion-label position="stacked">Sale End</ion-label>
+           <ion-item>
+             <ion-datetime display-format="MMM DD, YYYY" name="saleEnd"></ion-datetime>
+           </ion-item>
+         </div>
+       </div>
+
+
+      <div>
+        <ion-item>
+          <ion-label position="floating">Sale Description</ion-label>
+          <ion-textarea  name="description"></ion-textarea>
+        </ion-item>
+      </div>
+</div>
+      <!-- Banner Image Upload -->
+      <div class="upload">
+        <label class="upload-label">Upload Banner Image (Optional)</label>
+        <div class="preview-box" *ngIf="">
+          <ion-img [src]=""></ion-img>
+        </div>
+        <input type="file"  accept="image/*">
+      </div>
+
+      <!-- Submit -->
+      <ion-button expand="full" type="submit">Save Settings</ion-button>
+    </form>
+  </div>
+</ion-content>

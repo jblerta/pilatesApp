@@ -1,0 +1,100 @@
+<app-menu></app-menu>
+
+<ion-content>
+  <ion-header>
+    <ion-toolbar class="header">
+      <img src="" alt="Header Image" class="img-prop" />
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-grid class="main-grid" fixed="true">
+    <!-- Section Title -->
+    <ion-row>
+      <ion-col size="12">
+        <h3>{{ sections[0].sectionName }}</h3>
+      </ion-col>
+    </ion-row>
+
+    <!-- Desktop / Tablet View -->
+    <ng-container *ngIf="!isMobile; else mobile">
+      <ion-row>
+        <ion-col size="12">
+          <ion-card *ngFor="let card of sections[0].cards" class="card-item" >
+            <ion-grid>
+              <ion-row>
+                <ion-col size="4">
+                  <video
+                    [src]="card.videoURL"
+                    class="video-thumbnail"
+                    controls
+                    [poster]="card.image">
+                  </video>
+                </ion-col>
+                <ion-col size="6">
+                  <h2 class="card-title">{{ card.title }}</h2>
+                  <br>
+                  <p class="card-description">{{ card.description }}</p>
+                </ion-col>
+                <ion-col size="2">
+                  <div class="display">
+                  <div>
+                    <ion-icon class="download-icon" name="trash-outline"></ion-icon>
+                  </div>
+                  <br>
+                  <div>
+                    <ion-icon class="download-icon" name="create-outline"></ion-icon>
+                  </div>
+                  </div>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ng-container>
+
+    <!-- Mobile View -->
+    <ng-template #mobile>
+      <ion-list>
+        <ion-item *ngFor="let card of sections[0].cards" class="card-item mobile-item" lines="none" >
+          <!-- Left -->
+          <ion-thumbnail slot="start" class="video-thumb">
+            <video
+              [src]="card.videoURL"
+              class="video-thumbnail"
+              controls
+              [poster]="card.image">
+            </video>
+          </ion-thumbnail>
+
+          <!-- Center -->
+          <ion-label>
+            <h3>{{ card.title }}</h3>
+            <p class="card-description">{{ card.description }}</p>
+          </ion-label>
+
+          <!-- Right -->
+
+          <div>
+
+            <ion-icon
+              name="download-outline"
+              slot="end"
+              class="download-icon"
+              >
+            </ion-icon>
+          </div>
+          <div>
+          <ion-icon             class="download-icon"
+ name="trash-outline"></ion-icon>
+         </div>
+                  
+          <div>
+          <ion-icon             class="download-icon"
+ name="create-outline"></ion-icon>
+          </div>
+        </ion-item>
+      </ion-list>
+    </ng-template>
+  </ion-grid>
+</ion-content>

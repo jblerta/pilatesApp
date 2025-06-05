@@ -52,3 +52,12 @@
   ion-toolbar{
     --background-color: #ffffff;
   }
+
+ion-datetime {
+margin-top: 5px;
+margin-bottom: 5px;
+}
+
+ion-datetime::part(calendar-body):hover {
+  background: transparent !important;
+}

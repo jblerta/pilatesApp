@@ -7,6 +7,8 @@ import { AddSectionComponent } from './add-section/add-section.component';
 import { SubscriptionComponent } from './subscription/subscription.component';
 import { MenuComponent } from './sharedAdmin/menu/menu.component';
 import { AdminWorkoutComponent } from './admin-workout/admin-workout.component';
+import { WorkoutListComponent } from './admin-workout/workout-list/workout-list.component';
+
 
 @NgModule({
   schemas:[CUSTOM_ELEMENTS_SCHEMA],
@@ -14,6 +16,7 @@ import { AdminWorkoutComponent } from './admin-workout/admin-workout.component';
     AddSectionComponent,
     SubscriptionComponent,
     AdminWorkoutComponent,
+    WorkoutListComponent,
     MenuComponent
     ],
   imports: [

@@ -1,10 +1,11 @@
-
 <ion-content class="cont">
-  <app-menu></app-menu>
+  <app-menu>/</app-menu>
   <div class="form-container">
     <div class="form-title">
       <h3>Enter Workout</h3>
+      <p class="subtitle">Add a new workout with all the details below</p>
     </div>
+
     <form (ngSubmit)="onSave()" enctype="multipart/form-data">
       <div>
         <ion-item>
@@ -14,37 +15,39 @@
       </div>
 
       <div>
-      <ion-item>
-        <ion-select label="Section" label-placement="floating" name="section">
-          <ion-select-option value="apple">Apple</ion-select-option>
-          <ion-select-option value="banana">Banana</ion-select-option>
-          <ion-select-option value="orange">Orange</ion-select-option>
-        </ion-select>
-      </ion-item>
+        <ion-item>
+          <ion-select label="Section" label-placement="floating" name="section">
+            <ion-select-option value="apple">Apple</ion-select-option>
+            <ion-select-option value="banana">Banana</ion-select-option>
+            <ion-select-option value="orange">Orange</ion-select-option>
+          </ion-select>
+        </ion-item>
       </div>
-    
+
       <div>
         <ion-item>
           <ion-label position="floating">Description</ion-label>
           <ion-textarea [(ngModel)]="formData.description" name="description"></ion-textarea>
         </ion-item>
       </div>
-    
-        <div class="upload">
-          <label position="floating">Upload Image Cover</label>
+
+      <div class="upload">
+        <label class="upload-label">Upload Image Cover</label>
         <div class="preview-box" *ngIf="imagePreview">
           <ion-img [src]="imagePreview"></ion-img>
         </div> 
-          <input type="file" (change)="onFileSelected($event, 'image')" accept="image/*">
-        </div>
+        <input type="file" (change)="onFileSelected($event, 'image')" accept="image/*">
+      </div>
 
-        <div class="upload">
-          <label>Upload Video</label>
-          <video *ngIf="videoPreview" [src]="videoPreview" controls></video>
-          <input type="file" (change)="onFileSelected($event, 'video')" accept="video/*">
+      <div class="upload">
+        <label class="upload-label">Upload Video</label>
+        <div class="preview-box" *ngIf="videoPreview">
+          <video [src]="videoPreview" controls></video>
         </div>
-    
-      </form>
+        <input type="file" (change)="onFileSelected($event, 'video')" accept="video/*">
+      </div>
+
       <ion-button expand="full" type="submit" class="save-btn">Save</ion-button>
-    </div>
+    </form>
+  </div>
 </ion-content>
