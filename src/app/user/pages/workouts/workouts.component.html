@@ -7,7 +7,7 @@
         <div class="card-container">
           <ng-container *ngFor="let section of sections; let i = index">
                 <ion-card class="card-dimension" (click)="navigateToWorkoutList()">
-                  <!-- <ion-img src="{{section.sectionImg}}" class="img-dimension" alt="Card Image"></ion-img> -->
+                  <ion-img src="{{section.imageURL}}" class="img-dimension" alt="Card Image"></ion-img>
                   <ion-card-header>
                     <ion-card-title>{{section.name}}</ion-card-title>
                   </ion-card-header>

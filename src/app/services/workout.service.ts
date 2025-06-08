@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class WorkoutService {
-  private API_URL= 'http://192.168.0.36:3000/api/workouts'; 
+  private API_URL= 'http://localhost:3000/api/workouts'; 
 
   constructor(private http: HttpClient) { }
 
@@ -14,7 +14,16 @@ export class WorkoutService {
     return this.http.get(this.API_URL);
   }
 
-  addWorkout(data: any): Observable<any> {
-    return this.http.post(this.API_URL, data);
+  addWorkout(data: FormData): Observable<any> {
+    const uploadURL = `${this.API_URL}/upload`;
+    return this.http.post(uploadURL, data);
+  }
+
+  getWorkoutsBySection(sectionId:string):Observable<any>{
+    return this.http.get(`${this.API_URL}/section/${sectionId}`)
+  }
+
+  deleteWorkoutSection(workoutId: string):Observable<any>{
+    return this.http.delete(`${this.API_URL}/${workoutId}`)
   }
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-
+import { SectionService } from 'src/app/services/section.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-section',
@@ -9,15 +10,15 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AddSectionComponent  implements OnInit {
 
-  constructor(private http: HttpClient){}
-
-  ngOnInit(): void {
-    throw new Error('Method not implemented.');
-  }
-
   formData = { name: '', description: '', image: null };
   imagePreview: string | null = null;
-  videoPreview: string | null = null;
+
+  constructor(private http: HttpClient,private setionSrv:SectionService, private router: Router){}
+
+  ngOnInit(): void {
+  }
+
+
 
   onFileSelected(event: any, fileType: 'image' | 'video') {
     const file = event.target.files[0];
@@ -25,19 +26,15 @@ export class AddSectionComponent  implements OnInit {
 
     const reader = new FileReader();
     reader.onload = () => {
-      if (fileType === 'image') {
         this.formData.image = file;
         this.imagePreview = reader.result as string;
-        } //else if (fileType === 'video') {
-      //   this.formData.video = file;
-      //   this.videoPreview = reader.result as string;
-      // }
     };
 
     reader.readAsDataURL(file);
   }
 
   onSave() {
+      console.log('✅ onSave triggered');
    const formDataToSend = new FormData();
    formDataToSend.append('name',this.formData.name);
    formDataToSend.append('description', this.formData.description);
@@ -50,17 +47,30 @@ export class AddSectionComponent  implements OnInit {
     //   formDataToSend.append('video', this.formData.video);
     // }
 
-        this.http.post('http://localhost:3000/api/sections', formDataToSend)
-      .subscribe({
+    this.setionSrv.addSection(formDataToSend).subscribe({
         next: (res) => {
           console.log('Success:', res);
+          this.router.navigate(['/admin/admin-workout']);
           // Reset form or navigate
         },
         error: (err) => {
           console.error('Error:', err);
         }
       });
+
+      //      this.http.post('http://localhost:3000/api/section/upload', formDataToSend)
+      // .subscribe({
+      //   next: (res) => {
+      //     console.log('Success:', res);
+      //     // Reset form or navigate
+      //   },
+      //   error: (err) => {
+      //     console.error('Error:', err);
+      //   }
+      // });
    }
+
+   
 
   onNext() {
     }

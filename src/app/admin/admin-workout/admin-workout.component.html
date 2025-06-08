@@ -3,16 +3,17 @@
   <ion-grid fixed="true" style="width: 95%; margin: 0 auto;">
     <ion-row>
     </ion-row>
-    <ion-button routerLink="/admin/add-section" class="ion-margin">Add Workout</ion-button>
+    <ion-button routerLink="/admin/add-workout" class="ion-margin">Add Workout</ion-button>
+    <ion-button routerLink="/admin/add-section" class="ion-margin">Add Section</ion-button>
     <ion-row>
       <div><h3>Workouts</h3></div>
       <ion-col size="12">
         <div class="card-container">
           <ng-container *ngFor="let section of sections; let i = index">
-                <ion-card class="card-dimension">
-                  <!-- <ion-img src="{{section.sectionImg}}" class="img-dimension" alt="Card Image"></ion-img> -->
+                <ion-card class="card-dimension" (click)="navigateToWorkoutList(section._id)">
+                  <ion-img src="{{section.imageURL}}" class="img-dimension" alt="Card Image"></ion-img>
                   <ion-card-header>
-                    <ion-card-title>{{section.sectionName}}</ion-card-title>
+                    <ion-card-title>{{section.name}}</ion-card-title>
                   </ion-card-header>
                 </ion-card>
               </ng-container>
@@ -22,5 +23,8 @@
   </ion-grid>
 </ion-content>
 <app-footer></app-footer>
+
+
+
 
 

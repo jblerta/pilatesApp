@@ -1,4 +1,7 @@
 import { Component, HostListener, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { WorkoutService } from 'src/app/services/workout.service';
+
 
 @Component({
   selector: 'app-workout-list',
@@ -7,9 +10,19 @@ import { Component, HostListener, OnInit } from '@angular/core';
 })
 export class WorkoutListComponent  implements OnInit {
   isMobile!: boolean;
-  constructor() {   this.checkScreenSize(); }
+  sectionId!: string;
+  wourkoutId!: string;
+  workouts:any[]=[];
 
-  ngOnInit() {   this.checkScreenSize();}
+  constructor(private route:ActivatedRoute, private workoutService: WorkoutService) {   this.checkScreenSize(); }
+
+  ngOnInit() { 
+    this.sectionId = this.route.snapshot.paramMap.get('id')!;
+    console.log('🧩 Section ID:', this.sectionId);
+    this.checkScreenSize();
+    this.loadWorkouts();
+  }
+
 
     @HostListener('window:resize', ['$event'])
     onResize(event: any) {
@@ -19,23 +32,34 @@ export class WorkoutListComponent  implements OnInit {
     checkScreenSize() {
       this.isMobile = window.innerWidth < 768; // Adjust based on your breakpoints
     }
-  
+    
+    loadWorkouts(){
+      this.workoutService.getWorkoutsBySection(this.sectionId).subscribe(
+      (data) => {
+        this.workouts = data;
+        console.log('✅ DATA loaded from backend:', this.workouts);
+      },
+      (error) => console.error('❌ Error loading workouts', error)
+      )
+    }
 
 
-    sections = [
-    {
-      sectionName:"Winter Workouts",
-      cards: [
-        { id: 1, title: 'Card 1', description: 'This is the description for card 1.', image: '../../assets/pilates.webp', videoURL:'../../assets/test12.mp4' },
-        { id: 2, title: 'Card 2', description: 'This is the description for card 2.', image: '../../assets/pilates.webp', videoURL:'../../assets/test12.mp4'},
-        { id: 3, title: 'Card 3', description: 'This is the description for card 3.', image: '../../assets/pilates.webp', videoURL:'../../assets/test12.mp4'},
-        { id: 4, title: 'Card 4', description: 'This is the description for card 4.', image: '../../assets/pilates.webp', videoURL:'../../assets/test12.mp4'},
-        { id: 5, title: 'Card 5', description: 'This is the description for card 5.', image: '../../assets/pilates.webp', videoURL:'../../assets/test12.mp4'},
-        { id: 6, title: 'Card 6', description: 'This is the description for card 3.', image: '../../assets/pilates.webp', videoURL:'../../assets/test12.mp4' },
-        { id: 7, title: 'Card 7', description: 'This is the description for card 4.', image: '../../assets/pilates.webp', videoURL:'../../assets/test12.mp4' },
-        { id: 8, title: 'Card 8', description: 'This is the description for card 5.', image: '../../assets/pilates.webp', videoURL:'../../assets/test12.mp4' }
-    ],
-    }]
+    deleteWorkout(workoutId: string) {
+      console.log('log',workoutId);
+      
+    this.workoutService.deleteWorkoutSection(workoutId).subscribe({
+      next: (res) => {
+        console.log('✅ Workout deleted', res);
+        this.loadWorkouts(); 
+      },
+      error: (err) => {
+        console.error('❌ Error deleting workout', err);
+      }
+    });
+
+    }
+
+   
 
 
 }

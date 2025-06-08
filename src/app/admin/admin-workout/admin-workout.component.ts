@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { SectionService } from 'src/app/services/section.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-admin-workout',
@@ -7,39 +9,28 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminWorkoutComponent  implements OnInit {
 
-  constructor() { }
+    sections:any[] = [];
 
-  ngOnInit() {}
 
-    sections = [
-    {
-      sectionName:"Winter Workouts",
-      sectionImg:'../../assets/winter.jpg',
-    },
-    {
-      sectionName:"Summer Workouts",
-      sectionImg:'../../assets/pilates.webp',
-    },
-    {
-      sectionName:"Quick Workouts",
-      sectionImg:'../../assets/pilates.webp',
-    },
-    {
-      sectionName:"Power 15min Workouts",
-      sectionImg:'../../assets/pilates.webp',
-    },
-    {
-      sectionName:"Easy Yoga Workouts",
-      sectionImg:'../../assets/pilates.webp',
-    },
-    {
-      sectionName:"Easy Yoga Workouts",
-      sectionImg:'../../assets/pilates.webp',
-    },
-    {
-      sectionName:"Easy Yoga Workouts",
-      sectionImg:'../../assets/pilates.webp',
-    }
-  ]
+  constructor(private sectionService: SectionService, private router: Router) { }
+
+  ngOnInit() {
+     this.loadSection();
+  }
+
+navigateToWorkoutList(sectionId: string) {
+  console.log('Navigating to section:', sectionId);
+  this.router.navigate(['/admin/workout-list', sectionId]);
+}
+   loadSection(){
+    this.sectionService.getAllSections().subscribe(
+      (data) => {
+        this.sections = data;
+        console.log('✅ DATA loaded from backend:', this.sections);
+      },
+      (error) => console.error('❌ Error loading workouts', error)
+    );
+  }
+
 
 }

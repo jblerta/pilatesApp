@@ -4,6 +4,7 @@ import { AddSectionComponent } from './add-section/add-section.component';
 import { SubscriptionComponent } from './subscription/subscription.component';
 import { AdminWorkoutComponent } from './admin-workout/admin-workout.component';
 import { WorkoutListComponent } from './admin-workout/workout-list/workout-list.component';
+import { AddWorkoutComponent } from './add-workout/add-workout.component';
 
 const routes: Routes = [
 
@@ -15,6 +16,9 @@ const routes: Routes = [
   {
     path: 'add-section', component: AddSectionComponent
   },
+    {
+    path: 'add-workout', component: AddWorkoutComponent
+  },
    {
     path: 'admin-workout', component: AdminWorkoutComponent
   },
@@ -23,6 +27,9 @@ const routes: Routes = [
   },
   {
     path: 'subscription', component: SubscriptionComponent
+  },
+  {
+  path: 'workout-list/:id', component: WorkoutListComponent 
   }
   
 ];

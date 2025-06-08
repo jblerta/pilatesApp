@@ -11,7 +11,7 @@
     <!-- Section Title -->
     <ion-row>
       <ion-col size="12">
-        <h3>{{ sections[0].sectionName }}</h3>
+        <h3>fghj</h3>
       </ion-col>
     </ion-row>
 
@@ -19,7 +19,7 @@
     <ng-container *ngIf="!isMobile; else mobile">
       <ion-row>
         <ion-col size="12">
-          <ion-card *ngFor="let card of sections[0].cards" class="card-item" >
+          <ion-card *ngFor="let card of workouts" class="card-item" >
             <ion-grid>
               <ion-row>
                 <ion-col size="4">
@@ -38,7 +38,7 @@
                 <ion-col size="2">
                   <div class="display">
                   <div>
-                    <ion-icon class="download-icon" name="trash-outline"></ion-icon>
+                    <ion-icon class="download-icon" name="trash-outline" (click)="deleteWorkout(card._id)"></ion-icon>
                   </div>
                   <br>
                   <div>
@@ -56,7 +56,7 @@
     <!-- Mobile View -->
     <ng-template #mobile>
       <ion-list>
-        <ion-item *ngFor="let card of sections[0].cards" class="card-item mobile-item" lines="none" >
+        <ion-item *ngFor="let card of workouts" class="card-item mobile-item" lines="none" >
           <!-- Left -->
           <ion-thumbnail slot="start" class="video-thumb">
             <video
@@ -76,13 +76,6 @@
           <!-- Right -->
 
           <div>
-
-            <ion-icon
-              name="download-outline"
-              slot="end"
-              class="download-icon"
-              >
-            </ion-icon>
           </div>
           <div>
           <ion-icon             class="download-icon"
