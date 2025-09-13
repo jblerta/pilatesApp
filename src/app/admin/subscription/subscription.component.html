@@ -42,15 +42,19 @@
          <div>
            <ion-label position="stacked" class="ion-margin-bottom">Sale Start</ion-label>
            <ion-item>
-             <ion-datetime class="ion-no-padding" display-format="MMM DD, YYYY"  name="saleStart"></ion-datetime>
-           </ion-item>
+             <ion-datetime class="ion-no-padding" presentation="date" display-format="DD/MM/YYYY"  name="saleStart" [(ngModel)]="saleStartDate"
+              (ionChange)="updateDisplayedDate($event)"></ion-datetime>
+            </ion-item>
+            <ion-label class="ion-margin-top">Selected Date: {{ formattedSaleStartDate }}</ion-label>
          </div>
    
          <div>
            <ion-label position="stacked">Sale End</ion-label>
            <ion-item>
-             <ion-datetime display-format="MMM DD, YYYY" name="saleEnd"></ion-datetime>
+             <ion-datetime presentation="date" display-format="DD/MM/YYYY" name="saleEnd" [(ngModel)]="saleEndDate"
+              (ionChange)="updateDisplayedDate($event)"></ion-datetime>
            </ion-item>
+           <ion-label class="ion-margin-top">Selected Date: {{ formattedSaleEndDate }}</ion-label>
          </div>
        </div>
 
